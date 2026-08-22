@@ -44,7 +44,7 @@ export function useAuth()  { return useContext(AuthContext); }
 const T: Record<string, Record<Lang, string>> = {
   // ── Shared / Nav ──
   "nav.issues":         { en: "Issues",                 hi: "अंक" },
-  "nav.writers":        { en: "Writers",                hi: "लेखक" },
+  "nav.team":           { en: "Our Team",               hi: "हमारी टीम" },
   "nav.contact":        { en: "Contact",                hi: "संपर्क" },
   "nav.upload":         { en: "Upload Magazine",        hi: "पत्रिका अपलोड करें" },
   "nav.tagline":        { en: "Magazine",               hi: "पत्रिका" },
@@ -57,7 +57,7 @@ const T: Record<string, Record<Lang, string>> = {
   "hero.desc":          { en: "Celebrating Hindi language and literature through poetry, short stories, essays, and cultural features — written by club members and published each semester.", hi: "कविता, लघुकथा, निबंध और सांस्कृतिक लेखों के माध्यम से हिंदी भाषा और साहित्य का उत्सव — क्लब के सदस्यों द्वारा लिखित और प्रत्येक सेमेस्टर में प्रकाशित।" },
   "hero.cta":           { en: "Explore Magazines",      hi: "अंक देखें" },
   "hero.stat1":         { en: "Published Magazines",    hi: "प्रकाशित अंक" },
-  "hero.stat2":         { en: "Contributors",           hi: "योगदानकर्ता" },
+  "hero.stat2":         { en: "Team Members",           hi: "टीम सदस्य" },
   "hero.stat3":         { en: "Readers",                hi: "पाठक" },
 
   // ── Issues section ──
@@ -80,7 +80,7 @@ const T: Record<string, Record<Lang, string>> = {
 
   // ── Upload CTA banner ──
   "banner.heading":     { en: "Want to publish an issue?",    hi: "क्या आप कोई अंक प्रकाशित करना चाहते हैं?" },
-  "banner.desc":        { en: "Uploading and publishing magazine issues is available to registered Hindi Club members only. Sign in to access the member portal.", hi: "पत्रिका अंक अपलोड और प्रकाशित करना केवल पंजीकृत हिंदी क्लब सदस्यों के लिए उपलब्ध है। सदस्य पोर्टल तक पहुँचने के लिए साइन इन करें।" },
+  "banner.desc":        { en: "Uploading and publishing magazine issues is available to registered Yuva Kalam members only. Sign in to access the member portal.", hi: "पत्रिका अंक अपलोड और प्रकाशित करना केवल पंजीकृत युवा कलम सदस्यों के लिए उपलब्ध है। सदस्य पोर्टल तक पहुँचने के लिए साइन इन करें।" },
   "banner.cta":         { en: "Sign In to Upload",            hi: "अपलोड करने के लिए साइन इन करें" },
 
   // ── Team ──
@@ -92,7 +92,7 @@ const T: Record<string, Record<Lang, string>> = {
   "faq.eyebrow":        { en: "FAQ",                    hi: "सामान्य प्रश्न" },
   "faq.heading":        { en: "Frequently Asked",       hi: "अक्सर पूछे जाने वाले प्रश्न" },
   "faq.q1":  { en: "Who can publish to this magazine?",         hi: "इस पत्रिका में कौन प्रकाशित कर सकता है?" },
-  "faq.a1":  { en: "Only registered Hindi Club members can upload and publish issues. Sign in to access the member upload portal.", hi: "केवल पंजीकृत हिंदी क्लब सदस्य ही अंक अपलोड और प्रकाशित कर सकते हैं।" },
+  "faq.a1":  { en: "Only registered Yuva Kalam members can upload and publish issues. Sign in to access the member upload portal.", hi: "केवल पंजीकृत युवा कलम सदस्य ही अंक अपलोड और प्रकाशित कर सकते हैं।" },
   "faq.q2":  { en: "Can I write in both Hindi and English?",    hi: "क्या मैं हिंदी और अंग्रेज़ी दोनों में लिख सकता हूँ?" },
   "faq.a2":  { en: "Yes! We welcome bilingual contributions. Many of our articles feature both Hindi and English content.", hi: "हाँ! हम द्विभाषी योगदान का स्वागत करते हैं। हमारे कई लेख हिंदी और अंग्रेज़ी दोनों में होते हैं।" },
   "faq.q3":  { en: "When is the submission deadline?",          hi: "जमा करने की अंतिम तिथि कब है?" },
@@ -101,7 +101,7 @@ const T: Record<string, Record<Lang, string>> = {
   "faq.a4":  { en: "Absolutely. High-resolution images (at least 300 DPI) are welcome and encouraged.", hi: "बिल्कुल। उच्च-रिज़ॉल्यूशन चित्र (कम से कम 300 DPI) का स्वागत है।" },
 
   // ── Footer ──
-  "footer.copy":        { en: "Hindi Club · Magazine · © 2025",  hi: "हिंदी क्लब · पत्रिका · © 2025" },
+  "footer.copy":        { en: "Yuva Kalam · Magazine · © 2026",  hi: "युवा कलम · पत्रिका · © 2026" },
   "footer.privacy":     { en: "Privacy",                         hi: "गोपनीयता" },
   "footer.contact":     { en: "Contact",                         hi: "संपर्क" },
   "footer.guide":       { en: "Guidelines",                      hi: "दिशानिर्देश" },
@@ -128,7 +128,7 @@ const T: Record<string, Record<Lang, string>> = {
   "login.stat_issues":   { en: "Issues",                                hi: "अंक" },
   "login.stat_writers":  { en: "Writers",                               hi: "लेखक" },
   "login.stat_readers":  { en: "Readers",                               hi: "पाठक" },
-  "login.footer":        { en: "Hindi Club · Member Portal · © 2025",   hi: "हिंदी क्लब · सदस्य पोर्टल · © 2025" },
+  "login.footer":        { en: "Yuva Kalam · Member Portal · © 2026",   hi: "युवा कलम · सदस्य पोर्टल · © 2026" },
   "login.tagline":       { en: "Magazine",                              hi: "पत्रिका" },
 
   // ── Sign Up page ──
@@ -155,7 +155,7 @@ const T: Record<string, Record<Lang, string>> = {
   "signup.done_cta":     { en: "Go to Sign In",             hi: "साइन इन पर जाएं" },
   "signup.back":         { en: "Back to Sign In",           hi: "साइन इन पर वापस" },
   "signup.panel_heading":{ en: "Join our community of readers & writers.", hi: "पाठकों और लेखकों के हमारे समुदाय से जुड़ें।" },
-  "signup.panel_desc":   { en: "Become part of the Hindi Club and get access to all published magazines, events, and the ability to contribute your writing.", hi: "हिंदी क्लब का हिस्सा बनें और सभी प्रकाशित पत्रिकाओं, कार्यक्रमों और अपना लेखन योगदान करने की सुविधा पाएं।" },
+  "signup.panel_desc":   { en: "Become part of Yuva Kalam and get access to all published magazines, events, and the ability to contribute your writing.", hi: "युवा कलम का हिस्सा बनें और सभी प्रकाशित पत्रिकाओं, कार्यक्रमों और अपना लेखन योगदान करने की सुविधा पाएं।" },
   "signup.benefit1":     { en: "Access all published magazine issues",      hi: "सभी प्रकाशित पत्रिका अंकों तक पहुँच" },
   "signup.benefit2":     { en: "Submit poems, stories & essays",            hi: "कविता, कहानियाँ और निबंध जमा करें" },
   "signup.benefit3":     { en: "Join member-only events & workshops",       hi: "सदस्य-केवल कार्यक्रमों और कार्यशालाओं में शामिल हों" },

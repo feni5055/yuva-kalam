@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router";
-import { BookOpen, Eye, EyeOff, Lock, Mail } from "lucide-react";
+import { Eye, EyeOff, Lock, Mail } from "lucide-react";
 import { useLang, LangToggle, ThemeToggle, useAuth } from "../AppContext";
 import { supabase } from "../supabase";
+import { BrandLogo } from "../components/BrandLogo";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -44,15 +45,7 @@ export default function Login() {
           }}
         />
         <div className="relative">
-          <div className="flex items-center gap-3 mb-16">
-            <div className="w-9 h-9 bg-white/15 rounded-sm flex items-center justify-center">
-              <BookOpen size={18} className="text-primary-foreground" />
-            </div>
-            <div>
-              <div className="text-primary-foreground font-bold font-display" style={{ fontSize: "1.1rem" }}>Hindi Club</div>
-              <div className="text-primary-foreground/60 text-xs tracking-widest uppercase font-body">{t("login.tagline")}</div>
-            </div>
-          </div>
+          <BrandLogo tagline={t("login.tagline")} inverted compact className="mb-16" />
 
           <blockquote>
             <p className="text-primary-foreground text-4xl leading-[1.2] mb-6 font-display font-bold">
@@ -90,15 +83,7 @@ export default function Login() {
           </div>
 
           {/* Mobile logo */}
-          <div className="flex items-center gap-3 mb-10 lg:hidden">
-            <div className="w-9 h-9 bg-primary rounded-sm flex items-center justify-center">
-              <BookOpen size={16} className="text-primary-foreground" />
-            </div>
-            <div>
-              <div className="text-primary font-bold font-display" style={{ fontSize: "1.1rem" }}>Hindi Club</div>
-              <div className="text-muted-foreground text-xs tracking-widest uppercase font-body">{t("login.tagline")}</div>
-            </div>
-          </div>
+          <BrandLogo tagline={t("login.tagline")} compact className="mb-10 lg:hidden" />
 
           <div className="mb-8">
             <h1 className="text-3xl text-foreground mb-1.5 font-display font-bold">{t("login.heading")}</h1>

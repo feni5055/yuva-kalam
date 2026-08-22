@@ -1,5 +1,6 @@
-import { ArrowLeft, BookOpen } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router";
+import { BrandLogo } from "../components/BrandLogo";
 
 function PolicyPage({
   title,
@@ -20,7 +21,7 @@ function PolicyPage({
         </div>
       </header>
       <article className="max-w-3xl mx-auto px-5 py-12 md:py-20">
-        <BookOpen size={28} className="text-primary mb-5" aria-hidden="true" />
+        <BrandLogo className="mb-7" />
         <h1 className="text-4xl md:text-5xl font-display font-bold mb-4">{title}</h1>
         <p className="text-sm text-muted-foreground font-body leading-relaxed mb-10">{intro}</p>
         <div className="space-y-8">
@@ -41,7 +42,7 @@ export function Terms() {
   return (
     <PolicyPage
       title="Terms of Service"
-      intro="These terms explain the basic rules for using the Hindi Club Magazine website and member upload portal."
+      intro="These terms explain the basic rules for using the Yuva Kalam Magazine website and member upload portal."
       sections={[
         {
           heading: "Accounts",
@@ -53,11 +54,11 @@ export function Terms() {
         },
         {
           heading: "Editorial review",
-          body: "All magazine submissions may be reviewed, approved, rejected, unpublished, or removed by the Hindi Club administrators. Uploading does not guarantee publication.",
+          body: "All magazine submissions may be reviewed, approved, rejected, unpublished, or removed by Yuva Kalam administrators. Uploading does not guarantee publication.",
         },
         {
           heading: "Your content",
-          body: "You keep ownership of your original work. By submitting it, you allow the Hindi Club to store, review, display, and distribute it through the magazine website.",
+          body: "You keep ownership of your original work. By submitting it, you allow Yuva Kalam to store, review, display, and distribute it through the magazine website.",
         },
         {
           heading: "Service availability",
@@ -72,7 +73,7 @@ export function Privacy() {
   return (
     <PolicyPage
       title="Privacy Policy"
-      intro="This policy describes the information used to operate the Hindi Club Magazine website."
+      intro="This policy describes the information used to operate the Yuva Kalam Magazine website."
       sections={[
         {
           heading: "Information collected",

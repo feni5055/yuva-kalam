@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router";
-import { BookOpen, ArrowLeft, User, Mail, Lock, Eye, EyeOff, CheckCircle } from "lucide-react";
+import { ArrowLeft, User, Mail, Lock, Eye, EyeOff, CheckCircle } from "lucide-react";
 import { useLang, LangToggle, ThemeToggle } from "../AppContext";
 import { supabase } from "../supabase";
+import { BrandLogo } from "../components/BrandLogo";
 
 function PasswordStrength({ password }: { password: string }) {
   const { t } = useLang();
@@ -125,15 +126,7 @@ export default function SignUp() {
           style={{ backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,0.15) 40px, rgba(255,255,255,0.15) 41px)` }}
         />
         <div className="relative">
-          <div className="flex items-center gap-3 mb-16">
-            <div className="w-9 h-9 bg-white/15 rounded-sm flex items-center justify-center">
-              <BookOpen size={18} className="text-primary-foreground" />
-            </div>
-            <div>
-              <div className="text-primary-foreground font-bold font-display" style={{ fontSize: "1.1rem" }}>Hindi Club</div>
-              <div className="text-primary-foreground/60 text-xs tracking-widest uppercase font-body">{t("nav.tagline")}</div>
-            </div>
-          </div>
+          <BrandLogo tagline={t("nav.tagline")} inverted compact className="mb-16" />
           <p className="text-primary-foreground text-4xl leading-[1.2] mb-4 font-display font-bold">{t("signup.panel_heading")}</p>
           <p className="text-primary-foreground/60 text-sm leading-relaxed font-body">{t("signup.panel_desc")}</p>
         </div>
@@ -168,15 +161,7 @@ export default function SignUp() {
           </div>
 
           {/* Mobile logo */}
-          <div className="flex items-center gap-3 mb-8 lg:hidden">
-            <div className="w-8 h-8 bg-primary rounded-sm flex items-center justify-center">
-              <BookOpen size={14} className="text-primary-foreground" />
-            </div>
-            <div>
-              <div className="text-primary font-bold text-sm font-display">Hindi Club</div>
-              <div className="text-muted-foreground text-[10px] tracking-widest uppercase font-body">{t("nav.tagline")}</div>
-            </div>
-          </div>
+          <BrandLogo tagline={t("nav.tagline")} compact className="mb-8 lg:hidden" />
 
           <div className="mb-8">
             <h1 className="text-3xl text-foreground mb-1.5 font-display font-bold">{t("signup.heading")}</h1>

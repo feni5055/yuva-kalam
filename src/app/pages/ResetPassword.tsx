@@ -3,6 +3,7 @@ import { ArrowLeft, CheckCircle, LoaderCircle, Lock } from "lucide-react";
 import { Link } from "react-router";
 import { LangToggle, ThemeToggle } from "../AppContext";
 import { supabase } from "../supabase";
+import { BrandLogo } from "../components/BrandLogo";
 
 export default function ResetPassword() {
   const [checking, setChecking] = useState(true);
@@ -68,6 +69,7 @@ export default function ResetPassword() {
             <ThemeToggle />
           </div>
         </div>
+        <BrandLogo className="mb-8" />
 
         {checking ? (
           <div className="text-center">

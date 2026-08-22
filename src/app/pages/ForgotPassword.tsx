@@ -3,6 +3,7 @@ import { ArrowLeft, CheckCircle, Mail } from "lucide-react";
 import { Link } from "react-router";
 import { LangToggle, ThemeToggle } from "../AppContext";
 import { supabase } from "../supabase";
+import { BrandLogo } from "../components/BrandLogo";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
@@ -37,6 +38,7 @@ export default function ForgotPassword() {
             <ThemeToggle />
           </div>
         </div>
+        <BrandLogo className="mb-8" />
 
         {sent ? (
           <section className="text-center">

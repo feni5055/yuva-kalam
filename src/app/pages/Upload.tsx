@@ -12,6 +12,7 @@ import {
   AlertCircle, ChevronLeft, Calendar, Users, Hash, ImagePlus, ChevronDown,
   LoaderCircle, Trash2,
 } from "lucide-react";
+import { BrandLogo } from "../components/BrandLogo";
 
 interface UploadedFile {
   file: File;
@@ -36,12 +37,7 @@ function NavBar() {
             <ChevronLeft size={15} /> {t("upload.back")}
           </button>
           <span className="text-border text-sm">|</span>
-          <div className="flex items-center gap-2">
-            <div className="w-7 h-7 bg-primary rounded-sm flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-xs font-devanagari">ह</span>
-            </div>
-            <span className="text-foreground font-semibold font-display text-sm">{t("upload.portal")}</span>
-          </div>
+          <BrandLogo tagline={t("upload.portal")} compact />
         </div>
         <div className="flex items-center gap-2">
           <LangToggle />

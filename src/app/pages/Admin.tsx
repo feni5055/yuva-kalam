@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router";
+import { BrandLogo } from "../components/BrandLogo";
 import { CheckCircle2, ExternalLink, LoaderCircle, RefreshCw, ShieldCheck, Trash2, Undo2 } from "lucide-react";
 import { useAuth } from "../AppContext";
 import {
@@ -142,10 +143,7 @@ export default function Admin() {
     <main className="min-h-screen bg-background text-foreground">
       <header className="border-b border-border sticky top-0 bg-background/95 backdrop-blur-sm z-20">
         <div className="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between gap-4">
-          <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-accent font-body">Hindi Club</p>
-            <h1 className="text-2xl font-display font-bold">Content dashboard</h1>
-          </div>
+          <BrandLogo tagline="Content dashboard" compact />
           <div className="flex items-center gap-3">
             <button type="button" onClick={() => void loadData()} className="inline-flex items-center gap-2 border border-border px-3 py-2 text-sm font-body">
               <RefreshCw size={14} /> Refresh

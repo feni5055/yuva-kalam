@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { ArrowLeft, BookOpen, Download, FileText, LoaderCircle, MessageCircle, Trash2, Users } from "lucide-react";
 import { Link, useParams } from "react-router";
 import { useAuth } from "../AppContext";
+import { BrandLogo } from "../components/BrandLogo";
 import {
   deleteComment,
   getMagazine,
@@ -136,10 +137,11 @@ export default function IssueDetail() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <header className="border-b border-border bg-background/95 backdrop-blur-sm">
-        <div className="max-w-5xl mx-auto px-5 py-4">
+        <div className="max-w-5xl mx-auto px-5 py-4 flex items-center justify-between gap-4">
           <Link to="/#issues" className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors font-body">
             <ArrowLeft size={15} /> Back to archive
           </Link>
+          <BrandLogo compact />
         </div>
       </header>
 
@@ -284,7 +286,7 @@ export default function IssueDetail() {
       </section>
 
       <footer className="border-t border-border py-8 text-center text-xs text-muted-foreground font-body">
-        <BookOpen size={13} className="inline mr-1" /> Hindi Club Magazine
+        <img src="/yuva-kalam-official.jpg" alt="" className="inline w-5 h-5 rounded-full object-cover mr-1 align-middle" /> Yuva Kalam Magazine
       </footer>
     </main>
   );

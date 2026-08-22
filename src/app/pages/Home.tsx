@@ -7,6 +7,7 @@ import { useNavigate } from "react-router";
 import { useTheme, useLang, useAuth } from "../AppContext";
 import aisarTanimBarbhuiyaPhoto from "../../imports/aisar-tanim-barbhuiya.jpeg";
 import shainuPhoto from "../../imports/shainu-ui-ux-designer.jpeg";
+import { BrandLogo } from "../components/BrandLogo";
 import {
   listAuthors,
   listCategories,
@@ -28,7 +29,7 @@ function NavBar() {
 
   const navLinks = [
     { label: t("nav.issues"), href: "#issues" },
-    { label: t("nav.writers"), href: "#contributors" },
+    { label: t("nav.team"), href: "#team" },
     { label: t("nav.contact"), href: "#contact" },
   ];
 
@@ -41,19 +42,7 @@ function NavBar() {
     <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-3">
-          <div className="w-9 h-9 bg-primary rounded-sm flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-sm font-devanagari">ह</span>
-          </div>
-          <div>
-            <div className="text-primary font-bold leading-tight font-display" style={{ fontSize: "1.1rem" }}>
-              Hindi Club
-            </div>
-            <div className="text-muted-foreground text-xs leading-tight tracking-widest uppercase font-body">
-              {t("nav.tagline")}
-            </div>
-          </div>
-        </div>
+        <BrandLogo tagline={t("nav.tagline")} compact />
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-6">
@@ -167,14 +156,14 @@ function NavBar() {
 
 // ── Hero ───────────────────────────────────────────────────────────────────
 
-function Hero({ magazines, contributorCount }: { magazines: Magazine[]; contributorCount: number }) {
+function Hero({ magazines, teamMemberCount }: { magazines: Magazine[]; teamMemberCount: number }) {
   const { t } = useLang();
   const totalIssues = magazines.length;
   const featuredMagazines = magazines.filter((magazine) => magazine.coverUrl).slice(0, 2);
 
   const stats = [
     { labelKey: "hero.stat1", value: String(totalIssues) },
-    { labelKey: "hero.stat2", value: String(contributorCount) },
+    { labelKey: "hero.stat2", value: String(teamMemberCount) },
   ];
 
   return (
@@ -217,8 +206,8 @@ function Hero({ magazines, contributorCount }: { magazines: Magazine[]; contribu
             </div>
           ) : (
             <div className="relative w-56 h-72 border border-border bg-card shadow-xl flex flex-col items-center justify-center text-center px-8">
-              <BookOpen size={42} className="text-primary mb-4" />
-              <p className="font-display font-bold text-xl text-primary">Hindi Club</p>
+              <img src="/yuva-kalam-official.jpg" alt="Yuva Kalam official logo" className="w-24 h-24 rounded-full object-cover scale-[1.05] mb-4 border border-border" />
+              <p className="font-display font-bold text-xl text-primary">Yuva Kalam</p>
               <p className="font-body text-sm text-muted-foreground mt-1">New issues coming soon</p>
             </div>
           )}
@@ -398,9 +387,9 @@ function SignInToBanner() {
   );
 }
 
-// ── Contributors ───────────────────────────────────────────────────────────
+// ── Our Team ───────────────────────────────────────────────────────────────
 
-function ContributorsSection({ authors }: { authors: Author[] }) {
+function TeamSection({ members }: { members: Author[] }) {
   const leadershipOrder = [
     "ravi raj mishra",
     "priyadarshini pradhan",
@@ -408,7 +397,7 @@ function ContributorsSection({ authors }: { authors: Author[] }) {
     "r.varshaa",
     "balamuruga ramesh",
   ];
-  const leadership = authors
+  const leadership = members
     .filter((author) => author.bio.toLowerCase().includes("leader"))
     .sort((a, b) => {
       const rank = (name: string) => {
@@ -417,7 +406,7 @@ function ContributorsSection({ authors }: { authors: Author[] }) {
       };
       return rank(a.displayName) - rank(b.displayName) || a.displayName.localeCompare(b.displayName);
     });
-  const technicalMembers = authors
+  const technicalMembers = members
     .filter((author) => !author.bio.toLowerCase().includes("leader"))
     .sort((a, b) => {
       const technicalOrder = ["aisar tanim barbhuiya", "fenil muneer v p", "shainu"];
@@ -443,10 +432,10 @@ function ContributorsSection({ authors }: { authors: Author[] }) {
   );
 
   return (
-    <section id="contributors" className="py-20 border-t border-border scroll-mt-20">
+    <section id="team" aria-labelledby="team-heading" className="py-20 border-t border-border scroll-mt-20">
       <div className="max-w-6xl mx-auto px-5">
         <div className="text-center mb-14">
-          <div className="text-accent text-xs tracking-[0.2em] uppercase font-medium font-body">— Our Team</div>
+          <h2 id="team-heading" className="text-accent text-xs tracking-[0.2em] uppercase font-medium font-body">— Our Team</h2>
         </div>
 
         <div className="space-y-16">
@@ -567,9 +556,7 @@ function Footer() {
     <footer className="border-t border-border py-10">
       <div className="max-w-6xl mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-primary rounded-sm flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-xs font-devanagari">ह</span>
-          </div>
+          <img src="/yuva-kalam-official.jpg" alt="" className="w-8 h-8 rounded-full object-cover scale-[1.05] border border-border" />
           <span className="text-sm text-muted-foreground font-body">{t("footer.copy")}</span>
         </div>
         <div className="flex items-center gap-6 text-xs text-muted-foreground font-body">
@@ -634,12 +621,12 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <NavBar />
-      <Hero magazines={magazines} contributorCount={teamMembers.length} />
+      <Hero magazines={magazines} teamMemberCount={teamMembers.length} />
       <LatestIssue magazines={magazines} />
       <CategoriesSection activeCategory={activeCategory} categories={categories} onSelect={setActiveCategory} />
       <IssuesSection activeCategory={activeCategory} magazines={magazines} loading={loading} error={error} />
       <SignInToBanner />
-      <ContributorsSection authors={teamMembers} />
+      <TeamSection members={teamMembers} />
       <FaqSection />
       <ContactSection />
       <Footer />
