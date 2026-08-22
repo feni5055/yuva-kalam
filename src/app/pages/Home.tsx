@@ -7,6 +7,7 @@ import { useNavigate } from "react-router";
 import { useTheme, useLang, useAuth } from "../AppContext";
 import aisarTanimBarbhuiyaPhoto from "../../imports/aisar-tanim-barbhuiya.jpeg";
 import shainuPhoto from "../../imports/shainu-ui-ux-designer.jpeg";
+import raziaBegumPhoto from "../../imports/dr-s-razia-begum.jpg";
 import { BrandLogo } from "../components/BrandLogo";
 import {
   listAuthors,
@@ -439,9 +440,27 @@ function TeamSection({ members }: { members: Author[] }) {
         </div>
 
         <div className="space-y-16">
+          <div>
+            <h3 className="text-center text-xl font-display font-bold text-foreground mb-8">Faculty</h3>
+            <div className="w-full max-w-72 mx-auto text-center group flex flex-col items-center">
+              <div className="w-32 h-32 shrink-0 rounded-full overflow-hidden mb-4 ring-2 ring-border group-hover:ring-accent transition-all bg-muted">
+                <img
+                  src={raziaBegumPhoto}
+                  alt="Dr. S. Razia Begum"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
+              <div className="text-foreground text-lg leading-tight font-display font-semibold">Dr. S. Razia Begum</div>
+              <div className="text-muted-foreground text-sm mt-2 font-body">Associate Professor &amp; Head</div>
+              <div className="text-muted-foreground text-sm mt-1 font-body">Department of Hindi</div>
+            </div>
+          </div>
+
           {leadership.length > 0 && (
             <div>
-              <h3 className="text-center text-xl font-display font-bold text-foreground mb-8">Leadership</h3>
+              <h3 className="text-center text-xl font-display font-bold text-foreground mb-8">Leaders</h3>
               <div className="flex justify-center mb-10">
                 {renderMember(leadership[0])}
               </div>
