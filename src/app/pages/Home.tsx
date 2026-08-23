@@ -168,7 +168,7 @@ function Hero({ magazines, teamMemberCount }: { magazines: Magazine[]; teamMembe
   ];
 
   return (
-    <section className="relative overflow-hidden">
+    <section data-reveal className="relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-background via-secondary to-muted pointer-events-none" />
 
       <div className="relative max-w-6xl mx-auto px-5 py-20 md:py-28 grid md:grid-cols-2 gap-12 items-center">
@@ -200,7 +200,7 @@ function Hero({ magazines, teamMemberCount }: { magazines: Magazine[]; teamMembe
           {featuredMagazines.length > 0 ? (
             <div className="relative flex gap-4 justify-center">
               {featuredMagazines.map((magazine, index) => (
-                <div key={magazine.id} className={`w-40 h-56 overflow-hidden shadow-xl rounded-sm bg-muted ${index === 0 ? "mt-8" : ""}`}>
+                <div key={magazine.id} className={`motion-card w-40 h-56 overflow-hidden shadow-xl rounded-sm bg-muted ${index === 0 ? "mt-8" : ""}`}>
                   <img src={magazine.coverUrl} alt={magazine.title} loading="lazy" decoding="async" className="w-full h-full object-cover" />
                 </div>
               ))}
@@ -234,7 +234,7 @@ function LatestIssue({ magazines }: { magazines: Magazine[] }) {
   if (!latest) return null;
 
   return (
-    <section className="py-16 bg-primary text-primary-foreground">
+    <section data-reveal className="py-16 bg-primary text-primary-foreground">
       <div className="max-w-6xl mx-auto px-5 grid md:grid-cols-[180px_1fr] gap-8 items-center">
         <div className="w-36 md:w-44 aspect-[3/4] bg-white/10 shadow-2xl mx-auto md:mx-0 overflow-hidden flex items-center justify-center">
           {latest.coverUrl ? <img src={latest.coverUrl} alt={latest.title} className="w-full h-full object-cover" /> : <FileText size={38} className="text-primary-foreground/70" />}
@@ -263,7 +263,7 @@ function CategoriesSection({ activeCategory, categories, onSelect }: { activeCat
     document.getElementById("issues")?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
   return (
-    <section className="py-14 border-t border-border">
+    <section data-reveal className="py-14 border-t border-border">
       <div className="max-w-6xl mx-auto px-5">
         <h2 className="text-center text-2xl text-foreground font-display font-bold mb-7">{t("issues.categories")}</h2>
         <div className="flex flex-wrap justify-center gap-2.5">
@@ -287,7 +287,7 @@ function UploadedCard({ mag }: { mag: Magazine }) {
   const uploadedDate = new Date(mag.createdAt).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
 
   return (
-    <article className="group relative border border-border rounded-sm bg-card overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+    <article className="motion-card group relative border border-border rounded-sm bg-card overflow-hidden shadow-sm hover:shadow-md transition-shadow">
       <div className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-secondary to-muted flex items-center justify-center" style={{ aspectRatio: "3/4" }}>
         {mag.coverUrl ? (
           <img src={mag.coverUrl} alt={mag.title} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -336,7 +336,7 @@ function IssuesSection({ activeCategory, magazines, loading, error }: { activeCa
   const filteredUploaded = activeCategory ? magazines.filter((mag) => mag.category === activeCategory) : magazines;
 
   return (
-    <section id="issues" className="py-20 border-t border-border scroll-mt-20">
+    <section id="issues" data-reveal className="py-20 border-t border-border scroll-mt-20">
       <div className="max-w-6xl mx-auto px-5">
         <div className="flex items-end justify-between mb-12">
           <div>
@@ -365,7 +365,7 @@ function SignInToBanner() {
   const navigate = useNavigate();
   const { t } = useLang();
   return (
-    <section className="py-16 bg-secondary/20 border-t border-border">
+    <section data-reveal className="py-16 bg-secondary/20 border-t border-border">
       <div className="max-w-2xl mx-auto px-5 text-center">
         <div className="rounded-lg p-8 md:p-12 bg-secondary/95 shadow-lg">
           <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-5 ring-1 ring-border">
@@ -419,10 +419,10 @@ function TeamSection({ members }: { members: Author[] }) {
     });
 
   const renderMember = (author: Author) => (
-    <div key={author.id} className="w-full max-w-48 mx-auto text-center group flex flex-col items-center">
+    <div key={author.id} className="motion-card w-full max-w-48 mx-auto text-center group flex flex-col items-center rounded-md p-2">
       <div className="w-24 h-24 shrink-0 rounded-full overflow-hidden mb-3 ring-2 ring-border group-hover:ring-accent transition-all bg-muted">
         {author.avatarUrl ? (
-          <img src={author.avatarUrl} alt={author.displayName} loading="lazy" decoding="async" className="w-full h-full object-cover" />
+          <img src={author.avatarUrl} alt={author.displayName} loading="lazy" decoding="async" className="motion-image w-full h-full object-cover" />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-2xl font-display text-primary">{author.displayName.slice(0, 1).toUpperCase()}</div>
         )}
@@ -433,7 +433,7 @@ function TeamSection({ members }: { members: Author[] }) {
   );
 
   return (
-    <section id="team" aria-labelledby="team-heading" className="py-20 border-t border-border scroll-mt-20">
+    <section id="team" data-reveal aria-labelledby="team-heading" className="py-20 border-t border-border scroll-mt-20">
       <div className="max-w-6xl mx-auto px-5">
         <div className="text-center mb-14">
           <h2 id="team-heading" className="text-accent text-xs tracking-[0.2em] uppercase font-medium font-body">— Our Team</h2>
@@ -442,14 +442,14 @@ function TeamSection({ members }: { members: Author[] }) {
         <div className="space-y-16">
           <div>
             <h3 className="text-center text-xl font-display font-bold text-foreground mb-8">Faculty</h3>
-            <div className="w-full max-w-72 mx-auto text-center group flex flex-col items-center">
+            <div className="motion-card w-full max-w-72 mx-auto text-center group flex flex-col items-center rounded-md p-3">
               <div className="w-32 h-32 shrink-0 rounded-full overflow-hidden mb-4 ring-2 ring-border group-hover:ring-accent transition-all bg-muted">
                 <img
                   src={raziaBegumPhoto}
                   alt="Dr. S. Razia Begum"
                   loading="lazy"
                   decoding="async"
-                  className="w-full h-full object-cover object-top"
+                  className="motion-image w-full h-full object-cover object-top"
                 />
               </div>
               <div className="text-foreground text-lg leading-tight font-display font-semibold">Dr. S. Razia Begum</div>
@@ -510,7 +510,7 @@ function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 border-t border-border scroll-mt-20">
+    <section id="contact" data-reveal className="py-20 border-t border-border scroll-mt-20">
       <div className="max-w-3xl mx-auto px-5">
         <div className="text-center mb-10">
           <p className="text-accent text-xs tracking-[0.2em] uppercase mb-2 font-body">— Contact</p>
@@ -545,7 +545,7 @@ function FaqSection() {
   ];
 
   return (
-    <section id="faq" className="py-20 bg-secondary border-t border-border scroll-mt-20">
+    <section id="faq" data-reveal className="py-20 bg-secondary border-t border-border scroll-mt-20">
       <div className="max-w-3xl mx-auto px-5">
         <div className="text-center mb-12">
           <div className="text-accent text-xs tracking-[0.2em] uppercase mb-2 font-medium font-body">— {t("faq.eyebrow")}</div>
@@ -617,6 +617,34 @@ export default function Home() {
       active = false;
     };
   }, []);
+
+  useEffect(() => {
+    const elements = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (reducedMotion || !("IntersectionObserver" in window)) {
+      elements.forEach((element) => element.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px" },
+    );
+
+    elements.forEach((element, index) => {
+      element.style.setProperty("--reveal-delay", `${Math.min(index % 3, 2) * 70}ms`);
+      observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, [magazines.length]);
 
   const databaseTeamMembers = authors.filter((author) => author.bio.trim().length > 0);
   const teamMembers: Author[] = [
