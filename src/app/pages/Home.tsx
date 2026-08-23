@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import {
   Upload, BookOpen, ChevronDown, Menu, X,
-  Lock, FileText, Moon, Sun, Languages, LoaderCircle, Send,
+  Lock, FileText, Moon, Sun, Languages, LoaderCircle, Send, Eye,
 } from "lucide-react";
 import { useNavigate } from "react-router";
 import { useTheme, useLang, useAuth } from "../AppContext";
@@ -246,6 +246,7 @@ function LatestIssue({ magazines }: { magazines: Magazine[] }) {
           <div className="flex flex-wrap justify-center md:justify-start gap-2 mb-6 text-xs font-body">
             {latest.category && <span className="bg-white/10 px-3 py-1.5">{latest.category}</span>}
             <span className="bg-white/10 px-3 py-1.5">Vol. {latest.volume} · {latest.year}</span>
+            <span className="inline-flex items-center gap-1.5 bg-white/10 px-3 py-1.5"><Eye size={12} /> {latest.viewCount} reads</span>
           </div>
           <a href="#issues" className="inline-flex items-center gap-2 border border-primary-foreground/40 px-4 py-2.5 text-sm hover:bg-white/10 transition-colors font-body">
             <BookOpen size={14} /> {t("issues.latest_cta")}
@@ -321,7 +322,10 @@ function UploadedCard({ mag }: { mag: Magazine }) {
           </p>
         )}
         {mag.category && <p className="text-sm text-foreground font-body mt-1 mb-2">{t("issues.category")}: {mag.category}</p>}
-        <p className="text-[10px] text-muted-foreground font-body mt-1">{t("card.uploaded")} {uploadedDate}</p>
+        <div className="mt-1 flex items-center justify-between gap-3 text-[10px] text-muted-foreground font-body">
+          <p>{t("card.uploaded")} {uploadedDate}</p>
+          <span className="inline-flex items-center gap-1"><Eye size={11} /> {mag.viewCount} reads</span>
+        </div>
         <button type="button" onClick={() => navigate(`/issues/${mag.id}`)} className="mt-3 text-sm text-accent hover:underline font-body">View issue</button>
       </div>
     </article>

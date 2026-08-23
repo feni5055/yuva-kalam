@@ -42,6 +42,7 @@ create table if not exists public.magazines (
   status text not null default 'draft' check (status in ('draft', 'review', 'published')),
   cover_url text,
   pdf_url text,
+  view_count bigint not null default 0 check (view_count >= 0),
   created_by uuid not null references auth.users(id) on delete cascade,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
@@ -51,6 +52,7 @@ create table if not exists public.magazines (
 alter table public.magazines add column if not exists category text not null default '';
 alter table public.magazines add column if not exists category_id uuid references public.categories(id) on delete set null;
 alter table public.magazines add column if not exists updated_at timestamptz not null default now();
+alter table public.magazines add column if not exists view_count bigint not null default 0;
 
 create table if not exists public.articles (
   id uuid primary key default gen_random_uuid(),

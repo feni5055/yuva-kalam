@@ -32,6 +32,7 @@ export interface Magazine {
   status: PublicationStatus;
   coverUrl: string | null;
   pdfPath: string | null;
+  viewCount: number;
   createdBy: string;
   createdAt: string;
 }
@@ -91,6 +92,7 @@ interface MagazineRow {
   status: PublicationStatus;
   cover_url: string | null;
   pdf_url: string | null;
+  view_count: number | string | null;
   created_by: string;
   created_at: string;
 }
@@ -124,6 +126,7 @@ function mapMagazine(row: MagazineRow): Magazine {
     status: row.status,
     coverUrl: row.cover_url,
     pdfPath: row.pdf_url,
+    viewCount: Number(row.view_count ?? 0),
     createdBy: row.created_by,
     createdAt: row.created_at,
   };
@@ -258,6 +261,12 @@ export async function getMagazine(id: string): Promise<Magazine | null> {
     .maybeSingle();
   if (error) throw error;
   return data ? mapMagazine(data as MagazineRow) : null;
+}
+
+export async function recordMagazineView(id: string): Promise<number> {
+  const { data, error } = await supabase.rpc("record_magazine_view", { magazine_uuid: id });
+  if (error) throw error;
+  return Number(data ?? 0);
 }
 
 export async function getMagazinePdfLink(pdfPath: string, magazineId: string): Promise<string> {

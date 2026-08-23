@@ -10,7 +10,7 @@ import {
 import {
   BookOpen, Upload, FileText, X, CheckCircle,
   AlertCircle, ChevronLeft, Calendar, Users, Hash, ImagePlus, ChevronDown,
-  LoaderCircle, Trash2,
+  Eye, LoaderCircle, Trash2,
 } from "lucide-react";
 import { BrandLogo } from "../components/BrandLogo";
 
@@ -543,6 +543,7 @@ export default function UploadPage() {
                   <p className="text-xs text-muted-foreground font-body mt-0.5">
                     Vol. {magazine.volume} · {magazine.year} · {magazine.status === "published" ? "Published" : "Pending review"}
                   </p>
+                  <p className="inline-flex items-center gap-1 text-xs text-muted-foreground font-body mt-1"><Eye size={12} /> {magazine.viewCount} reads</p>
                 </div>
                 {magazine.status !== "draft" ? (
                   <span className="text-xs text-muted-foreground font-body">Admin deletion required</span>

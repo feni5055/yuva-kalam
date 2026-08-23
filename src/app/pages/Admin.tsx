@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router";
 import { BrandLogo } from "../components/BrandLogo";
-import { CheckCircle2, ExternalLink, LoaderCircle, RefreshCw, ShieldCheck, Trash2, Undo2 } from "lucide-react";
+import { CheckCircle2, ExternalLink, Eye, LoaderCircle, RefreshCw, ShieldCheck, Trash2, Undo2 } from "lucide-react";
 import { useAuth } from "../AppContext";
 import {
   deleteComment,
@@ -188,6 +188,7 @@ export default function Admin() {
                     <div className="flex-1">
                       <p className="font-display font-semibold">{magazine.title}</p>
                       <p className="text-xs text-muted-foreground font-body">{magazine.category || "Uncategorised"} · Vol. {magazine.volume} · {magazine.year}</p>
+                      <p className="inline-flex items-center gap-1 text-xs text-muted-foreground font-body mt-1"><Eye size={12} /> {magazine.viewCount} reads</p>
                       <span className={`inline-flex mt-2 px-2 py-1 text-[11px] uppercase tracking-wider font-body ${
                         magazine.status === "published"
                           ? "bg-green-100 text-green-800"

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowLeft, BookOpen, Download, FileText, LoaderCircle, MessageCircle, Trash2, Users } from "lucide-react";
+import { ArrowLeft, BookOpen, Download, Eye, FileText, LoaderCircle, MessageCircle, Trash2, Users } from "lucide-react";
 import { Link, useParams } from "react-router";
 import { useAuth } from "../AppContext";
 import { BrandLogo } from "../components/BrandLogo";
@@ -9,6 +9,7 @@ import {
   getMagazinePdfLink,
   listMagazineComments,
   listPublishedArticles,
+  recordMagazineView,
   submitMagazineComment,
   type Article,
   type Comment,
@@ -48,6 +49,18 @@ export default function IssueDetail() {
         setIssue(magazine);
         setArticles(magazineArticles);
         setComments(magazineComments);
+
+        if (magazine?.status === "published") {
+          const readKey = `yuva-kalam:read:${magazine.id}`;
+          if (!window.localStorage.getItem(readKey)) {
+            void recordMagazineView(magazine.id)
+              .then((viewCount) => {
+                window.localStorage.setItem(readKey, "1");
+                if (active) setIssue((current) => current ? { ...current, viewCount } : current);
+              })
+              .catch(() => undefined);
+          }
+        }
       })
       .catch((requestError: Error) => {
         if (active) setError(requestError.message);
@@ -161,9 +174,10 @@ export default function IssueDetail() {
           </p>
           <h1 className="text-4xl md:text-5xl font-display font-bold leading-tight mb-2">{issue.title}</h1>
           {issue.subtitle && <p className="text-lg text-muted-foreground font-body mb-7">{issue.subtitle}</p>}
-          <div className="grid grid-cols-2 gap-3 mb-8 text-sm font-body">
+          <div className="grid grid-cols-3 gap-3 mb-8 text-sm font-body">
             <div className="bg-secondary p-3"><span className="block text-xs text-muted-foreground mb-1">Volume</span>Vol. {issue.volume}</div>
             <div className="bg-secondary p-3"><span className="block text-xs text-muted-foreground mb-1">Year</span>{issue.year}</div>
+            <div className="bg-secondary p-3"><span className="block text-xs text-muted-foreground mb-1">Readers</span><span className="inline-flex items-center gap-1.5"><Eye size={14} /> {issue.viewCount}</span></div>
           </div>
           {issue.editors && (
             <p className="flex items-center gap-2 text-sm text-muted-foreground font-body mb-8">
