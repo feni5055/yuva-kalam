@@ -432,7 +432,7 @@ function TeamSection({ members }: { members: Author[] }) {
         )}
       </div>
       <div className="whitespace-nowrap text-foreground text-xs sm:text-sm md:text-base leading-tight font-display font-semibold">{author.displayName}</div>
-      <div className="text-muted-foreground text-xs mt-1 font-body">{author.bio}</div>
+      <div className="text-muted-foreground text-xs mt-1 font-body">{author.bio.trim().toLowerCase() === "leader" ? "Student Leader" : author.bio}</div>
     </div>
   );
 
@@ -464,7 +464,7 @@ function TeamSection({ members }: { members: Author[] }) {
 
           {leadership.length > 0 && (
             <div>
-              <h3 className="text-center text-xl font-display font-bold text-foreground mb-8">Leaders</h3>
+              <h3 className="text-center text-xl font-display font-bold text-foreground mb-8">Student Leaders</h3>
               <div className="flex justify-center mb-10">
                 {renderMember(leadership[0])}
               </div>
@@ -684,3 +684,4 @@ export default function Home() {
     </div>
   );
 }
+
