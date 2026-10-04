@@ -446,6 +446,7 @@ function TeamSection({ members }: { members: Author[] }) {
       </div>
       <div className="whitespace-nowrap text-foreground text-xs sm:text-sm md:text-base leading-tight font-display font-semibold">{author.displayName}</div>
       <div className="text-muted-foreground text-xs mt-1 font-body">{author.bio.trim().toLowerCase() === "leader" ? "Student Leader" : author.bio}</div>
+      {["ravi raj mishra", "priyadarshini pradhan"].includes(author.displayName.toLowerCase()) && <div className="text-muted-foreground text-xs mt-1 font-body">(BCA Data Science)</div>}
       {["mohit kumar", "purwanshi nayak"].includes(author.displayName.toLowerCase()) && <div className="text-muted-foreground text-xs mt-1 font-body">(B.Sc Biotechnology)</div>}
       {author.displayName.toLowerCase() === "abhishpa satapathy" && <div className="text-muted-foreground text-xs mt-1 font-body">(Bcom IAF)</div>}
       {author.displayName.toLowerCase() === "aakash karthikeyan" && <div className="text-muted-foreground text-xs mt-1 font-body">(B.com IAF)</div>}
@@ -752,5 +753,4 @@ export default function Home() {
     </div>
   );
 }
-
 
