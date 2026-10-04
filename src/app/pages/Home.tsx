@@ -13,6 +13,7 @@ import abhishpaSatapathyPhoto from "../../imports/abhishpa-satapathy.jpg";
 import aakashKarthikeyanPhoto from "../../imports/aakash-karthikeyan.jpg";
 import antarikshRajPhoto from "../../imports/antariksh-raj.jpg";
 import siddhanthAgarwalPhoto from "../../imports/siddhanth-agarwal.jpg";
+import hdKarthikPhoto from "../../imports/hd-karthik.jpg";
 import raziaBegumPhoto from "../../imports/dr-s-razia-begum.jpg";
 import { BrandLogo } from "../components/BrandLogo";
 import {
@@ -426,7 +427,7 @@ function TeamSection({ members }: { members: Author[] }) {
   const technicalMembers = members
     .filter((author) => !author.bio.toLowerCase().includes("leader"))
     .sort((a, b) => {
-      const technicalOrder = ["aisar tanim barbhuiya", "fenil muneer v p", "shainu"];
+      const technicalOrder = ["aisar tanim barbhuiya", "fenil muneer v p", "shainu", "h d karthik"];
       const rank = (name: string) => {
         const index = technicalOrder.indexOf(name.toLowerCase());
         return index === -1 ? technicalOrder.length : index;
@@ -669,7 +670,7 @@ export default function Home() {
 
   const databaseTeamMembers = authors.filter((author) => author.bio.trim().length > 0);
   const teamMembers: Author[] = [
-    ...databaseTeamMembers.filter((author) => !["aisar tanim barbhuiya", "shainu", "mohit kumar", "purwanshi nayak", "abhishpa satapathy", "aakash karthikeyan", "antariksh raj", "siddhanth agarwal"].includes(author.displayName.toLowerCase())),
+    ...databaseTeamMembers.filter((author) => !["aisar tanim barbhuiya", "shainu", "mohit kumar", "purwanshi nayak", "abhishpa satapathy", "aakash karthikeyan", "antariksh raj", "siddhanth agarwal", "h d karthik"].includes(author.displayName.toLowerCase())),
     {
       id: "team-mohit-kumar",
       profileId: null,
@@ -726,6 +727,13 @@ export default function Home() {
       bio: "UI/UX Designer",
       avatarUrl: shainuPhoto,
     },
+    {
+      id: "team-hd-karthik",
+      profileId: null,
+      displayName: "H D Karthik",
+      bio: "Backend Developer",
+      avatarUrl: hdKarthikPhoto,
+    },
   ];
 
   return (
@@ -743,7 +751,6 @@ export default function Home() {
     </div>
   );
 }
-
 
 
 
