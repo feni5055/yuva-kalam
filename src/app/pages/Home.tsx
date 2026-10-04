@@ -11,6 +11,7 @@ import mohitKumarPhoto from "../../imports/mohit-kumar.jpg";
 import purwanshiNayakPhoto from "../../imports/purwanshi-nayak.jpg";
 import abhishpaSatapathyPhoto from "../../imports/abhishpa-satapathy.jpg";
 import aakashKarthikeyanPhoto from "../../imports/aakash-karthikeyan.jpg";
+import antarikshRajPhoto from "../../imports/antariksh-raj.jpg";
 import raziaBegumPhoto from "../../imports/dr-s-razia-begum.jpg";
 import { BrandLogo } from "../components/BrandLogo";
 import {
@@ -409,6 +410,7 @@ function TeamSection({ members }: { members: Author[] }) {
     "purwanshi nayak",
     "abhishpa satapathy",
     "aakash karthikeyan",
+    "antariksh raj",
   ];
   const leadership = members
     .filter((author) => author.bio.toLowerCase().includes("leader"))
@@ -444,6 +446,7 @@ function TeamSection({ members }: { members: Author[] }) {
       {["mohit kumar", "purwanshi nayak"].includes(author.displayName.toLowerCase()) && <div className="text-muted-foreground text-xs mt-1 font-body">(B.Sc Biotechnology)</div>}
       {author.displayName.toLowerCase() === "abhishpa satapathy" && <div className="text-muted-foreground text-xs mt-1 font-body">(Bcom IAF)</div>}
       {author.displayName.toLowerCase() === "aakash karthikeyan" && <div className="text-muted-foreground text-xs mt-1 font-body">(B.com IAF)</div>}
+      {author.displayName.toLowerCase() === "antariksh raj" && <div className="text-muted-foreground text-xs mt-1 font-body">IAF B</div>}
     </div>
   );
 
@@ -663,7 +666,7 @@ export default function Home() {
 
   const databaseTeamMembers = authors.filter((author) => author.bio.trim().length > 0);
   const teamMembers: Author[] = [
-    ...databaseTeamMembers.filter((author) => !["aisar tanim barbhuiya", "shainu", "mohit kumar", "purwanshi nayak", "abhishpa satapathy", "aakash karthikeyan"].includes(author.displayName.toLowerCase())),
+    ...databaseTeamMembers.filter((author) => !["aisar tanim barbhuiya", "shainu", "mohit kumar", "purwanshi nayak", "abhishpa satapathy", "aakash karthikeyan", "antariksh raj"].includes(author.displayName.toLowerCase())),
     {
       id: "team-mohit-kumar",
       profileId: null,
@@ -691,6 +694,13 @@ export default function Home() {
       displayName: "Aakash karthikeyan",
       bio: "Student Leader",
       avatarUrl: aakashKarthikeyanPhoto,
+    },
+    {
+      id: "team-antariksh-raj",
+      profileId: null,
+      displayName: "Antariksh raj",
+      bio: "Student Leader",
+      avatarUrl: antarikshRajPhoto,
     },
     {
       id: "team-aisar-tanim-barbhuiya",
@@ -723,6 +733,7 @@ export default function Home() {
     </div>
   );
 }
+
 
 
 
